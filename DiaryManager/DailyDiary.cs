@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DiaryManager
 {
@@ -13,28 +12,7 @@ namespace DiaryManager
     {
         public const string filePath = "../../../mydiary.txt";
         private static StringBuilder stringBuilder = new StringBuilder();
-        private static int IndexOf(this StringBuilder sb, string value, int startIndex)
-        {
-            int index;
-            int length = value.Length;
-            int maxSearchLength = (sb.Length - length) + 1;
 
-
-            for (int i = startIndex; i < maxSearchLength; ++i)
-            {
-                if (sb[i] == value[0])
-                {
-                    index = 1;
-                    while ((index < length) && (sb[i + index] == value[index]))
-                        ++index;
-
-                    if (index == length)
-                        return i;
-                }
-            }
-
-            return -1;
-        }
         public static string readContent()
         {
             return File.ReadAllText(filePath);
