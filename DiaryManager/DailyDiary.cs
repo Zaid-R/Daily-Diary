@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 namespace DiaryManager
 {
     public record Locatoin(int startOfEntry, int endOfEntry);
-    public static class DailyDiary
+
+    public class DailyDiary
     {
         public const string filePath = "../../../mydiary.txt";
-        private static StringBuilder stringBuilder = new StringBuilder();
+        private static readonly StringBuilder stringBuilder = new StringBuilder();
 
         public static string readContent()
         {
             return File.ReadAllText(filePath);
         }
 
-        public static void addEntry(Entry entry)
+        public static void addEntry( Entry entry)
         {
             stringBuilder.AppendLine(File.ReadAllText(filePath));
             stringBuilder.AppendLine("");
@@ -27,8 +28,6 @@ namespace DiaryManager
             File.WriteAllText(filePath, stringBuilder.ToString());
             stringBuilder.Clear();
         }
-
-
 
         private static bool checkDateFormat(string date)
         {
